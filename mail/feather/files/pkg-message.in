@@ -1,0 +1,33 @@
+[
+{ type: install
+  message: <<EOM
+Feather has been installed to %%FEATHER_DIR%%.
+
+Configuration lives in %%ETCDIR%%. Two starting points were installed as
+samples; copy and edit them before starting the service:
+
+  cp %%ETCDIR%%/server.exs.sample   %%ETCDIR%%/server.exs
+  cp %%ETCDIR%%/pipeline.exs.sample %%ETCDIR%%/pipeline.exs
+
+Further worked examples (MSA, spam filtering, rate limiting, tarpitting)
+are in %%EXAMPLESDIR%%.
+
+Then enable and start it:
+
+  sysrc feather_enable=YES
+  service feather start
+
+Logs are written to %%FEATHER_LOGDIR%%.
+
+A dedicated %%FEATHER_USER%%:%%FEATHER_GROUP%% account owns the config, log
+and run directories.
+
+The service itself still starts as root, because it binds the privileged
+SMTP ports (25, 465 and 587) and does not drop privileges on its own. If you
+have arranged unprivileged access to those ports (mac_portacl, a redirector,
+or net.inet.ip.portrange.reservedhigh), set:
+
+  sysrc feather_user=%%FEATHER_USER%%
+EOM
+}
+]

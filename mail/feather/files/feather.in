@@ -1,0 +1,144 @@
+#!/bin/sh
+
+# PROVIDE: feather
+# REQUIRE: LOGIN DAEMON NETWORKING
+# KEYWORD: shutdown
+#
+# Add the following lines to /etc/rc.conf to enable feather:
+#
+#   feather_enable="YES"
+#
+# Optional rc.conf variables:
+#
+#   feather_user (str):    User to run as. Default "root", which is required
+#                          to bind the privileged SMTP ports (25, 465, 587);
+#                          the release does not drop privileges on its own.
+#                          Set this to "%%FEATHER_USER%%" only if you have
+#                          arranged unprivileged access to those ports
+#                          (mac_portacl, a redirector, or
+#                          net.inet.ip.portrange.reservedhigh).
+#   feather_group (str):   Group to run as (default: %%FEATHER_GROUP%%)
+#   feather_config (str):  Config directory (default: %%ETCDIR%%)
+#   feather_log (str):     Log directory (default: %%FEATHER_LOGDIR%%)
+
+. /etc/rc.subr
+
+name="feather"
+rcvar="${name}_enable"
+
+load_rc_config $name
+
+: ${feather_enable:="NO"}
+: ${feather_user:="root"}
+: ${feather_group:="%%FEATHER_GROUP%%"}
+: ${feather_config:="%%ETCDIR%%"}
+: ${feather_log:="%%FEATHER_LOGDIR%%"}
+
+feather_dir="%%FEATHER_DIR%%"
+feather_bin="${feather_dir}/bin/${name}"
+pidfile="%%FEATHER_RUNDIR%%/${name}.pid"
+
+export LANG="en_US.UTF-8"
+export RELEASE_NODE="feather@localhost"
+export FEATHER_CONFIG_FOLDER="${feather_config}"
+export RELEASE_TMP="${feather_dir}/tmp"
+
+start_cmd="${name}_start"
+stop_cmd="${name}_stop"
+status_cmd="${name}_status"
+
+feather_start()
+{
+	if feather_running; then
+		echo "${name} is already running."
+		return 0
+	fi
+
+	echo "Starting ${name}."
+	install -d -o "${feather_user}" -g "${feather_group}" "${feather_log}"
+	install -d -o "${feather_user}" -g "${feather_group}" "$(dirname "${pidfile}")"
+	install -d -o "${feather_user}" -g "${feather_group}" "${feather_dir}/tmp"
+
+	# daemon(8) forks the BEAM into the background, records its PID and
+	# redirects stdio to console.log. `feather start` (rather than
+	# `feather daemon`) keeps the BEAM a direct child of daemon(8), so
+	# `feather stop` shuts it down cleanly and daemon(8) reaps the pidfile.
+	/usr/sbin/daemon \
+		-f \
+		-p "${pidfile}" \
+		-u "${feather_user}" \
+		-o "${feather_log}/console.log" \
+		env HOME="${feather_dir}" \
+		    PATH="/sbin:/bin:/usr/sbin:/usr/bin:%%PREFIX%%/sbin:%%PREFIX%%/bin" \
+		    LANG="${LANG}" \
+		    RELEASE_NODE="${RELEASE_NODE}" \
+		    FEATHER_CONFIG_FOLDER="${FEATHER_CONFIG_FOLDER}" \
+		    RELEASE_TMP="${RELEASE_TMP}" \
+		    "${feather_bin}" start
+
+	# BEAM cold start takes a few seconds; poll rather than sleep a fixed
+	# amount, and surface the log if it never comes up.
+	_i=0
+	while [ $_i -lt 30 ]; do
+		if feather_running; then
+			echo "${name} started."
+			return 0
+		fi
+		sleep 1
+		_i=$((_i + 1))
+	done
+
+	echo "${name} failed to start. Last lines from console log:"
+	[ -f "${feather_log}/console.log" ] && tail -60 "${feather_log}/console.log"
+	return 1
+}
+
+feather_stop()
+{
+	if ! feather_running; then
+		echo "${name} is not running."
+		rm -f "${pidfile}"
+		return 0
+	fi
+
+	echo "Stopping ${name}."
+	HOME="${feather_dir}" "${feather_bin}" stop 2>/dev/null || true
+
+	_i=0
+	while [ $_i -lt 20 ]; do
+		if ! feather_running; then
+			rm -f "${pidfile}"
+			echo "${name} stopped."
+			return 0
+		fi
+		sleep 1
+		_i=$((_i + 1))
+	done
+
+	echo "${name} did not stop within 20s; sending TERM to pid $(cat "${pidfile}" 2>/dev/null)."
+	[ -f "${pidfile}" ] && kill -TERM "$(cat "${pidfile}")" 2>/dev/null
+	sleep 2
+	rm -f "${pidfile}"
+}
+
+feather_status()
+{
+	if feather_running; then
+		echo "${name} is running (pid $(feather_pid))."
+	else
+		echo "${name} is not running."
+		return 1
+	fi
+}
+
+feather_running()
+{
+	HOME="${feather_dir}" "${feather_bin}" pid > /dev/null 2>&1
+}
+
+feather_pid()
+{
+	HOME="${feather_dir}" "${feather_bin}" pid 2>/dev/null
+}
+
+run_rc_command "$1"

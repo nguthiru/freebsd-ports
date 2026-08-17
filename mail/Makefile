@@ -136,6 +136,7 @@
     SUBDIR += faces
     SUBDIR += fastforward
     SUBDIR += fdm
+    SUBDIR += feather
     SUBDIR += fetchmail
     SUBDIR += fetchmailconf
     SUBDIR += filtermail
