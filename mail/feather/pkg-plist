@@ -1,0 +1,14 @@
+bin/feather
+@sample %%ETCDIR%%/server.exs.sample
+@sample %%ETCDIR%%/pipeline.exs.sample
+%%PORTEXAMPLES%%%%EXAMPLESDIR%%/inbound_auth_results.exs
+%%PORTEXAMPLES%%%%EXAMPLESDIR%%/msa_secure.exs
+%%PORTEXAMPLES%%%%EXAMPLESDIR%%/msa_with_rate_limiting.exs
+%%PORTEXAMPLES%%%%EXAMPLESDIR%%/msa_with_sender_validation.exs
+%%PORTEXAMPLES%%%%EXAMPLESDIR%%/msa_with_tarpitting.exs
+%%PORTEXAMPLES%%%%EXAMPLESDIR%%/mta_with_spam_filtering.exs
+%%PORTEXAMPLES%%%%EXAMPLESDIR%%/pipeline.exs
+%%PORTEXAMPLES%%%%EXAMPLESDIR%%/server.exs
+@dir(%%FEATHER_USER%%,%%FEATHER_GROUP%%,750) %%ETCDIR%%
+@dir(%%FEATHER_USER%%,%%FEATHER_GROUP%%,750) %%FEATHER_LOGDIR%%
+@dir(%%FEATHER_USER%%,%%FEATHER_GROUP%%,755) %%FEATHER_RUNDIR%%

@@ -1,0 +1,13 @@
+Feather is an SMTP mail server that can act as a submission agent (MSA) or
+a transfer agent (MTA). Its behaviour is assembled from adapters rather
+than configured through a monolithic rule language: authentication, access
+control, routing, delivery, spam filtering and message transformation are
+each a pluggable stage in a session pipeline defined in the config file.
+
+Bundled adapters cover PAM and password-file authentication, IP and relay
+access control, per-domain routing, LMTP, MX and SMTP forwarding delivery,
+SPF, DKIM, DMARC, DNSBL, rspamd and SpamAssassin filtering, and quarantine
+and header-rewriting transformers.
+
+Feather runs on the BEAM; this port installs a self-contained release that
+does not require a separate Erlang or Elixir installation at runtime.
