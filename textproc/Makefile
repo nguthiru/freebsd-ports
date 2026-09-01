@@ -319,7 +319,6 @@
     SUBDIR += ie-hunspell
     SUBDIR += igor
     SUBDIR += iksemel
-    SUBDIR += info2html
     SUBDIR += info2man
     SUBDIR += info_to_html
     SUBDIR += intltool
@@ -463,7 +462,6 @@
     SUBDIR += linuxdoc-tools
     SUBDIR += livediff
     SUBDIR += localize
-    SUBDIR += logseq
     SUBDIR += lookatme
     SUBDIR += loook
     SUBDIR += lowdown
@@ -1160,6 +1158,7 @@
     SUBDIR += p5-XML-NodeFilter
     SUBDIR += p5-XML-OPML
     SUBDIR += p5-XML-OPML-LibXML
+    SUBDIR += p5-XML-OPML-SimpleGen
     SUBDIR += p5-XML-Parsepp
     SUBDIR += p5-XML-Parser
     SUBDIR += p5-XML-Parser-EasyTree
@@ -1386,6 +1385,7 @@
     SUBDIR += py-dict2xml
     SUBDIR += py-diff-match-patch
     SUBDIR += py-dirtyjson
+    SUBDIR += py-docify
     SUBDIR += py-doclang
     SUBDIR += py-docling
     SUBDIR += py-docling-agent
@@ -1719,6 +1719,8 @@
     SUBDIR += py-sphinx-intl
     SUBDIR += py-sphinx-issues
     SUBDIR += py-sphinx-last-updated-by-git
+    SUBDIR += py-sphinx-llm
+    SUBDIR += py-sphinx-markdown-builder
     SUBDIR += py-sphinx-markdown-tables
     SUBDIR += py-sphinx-material
     SUBDIR += py-sphinx-me
@@ -1889,8 +1891,6 @@
     SUBDIR += ruby-escape
     SUBDIR += ruby-format
     SUBDIR += ruby-htree
-    SUBDIR += ruby-rd-mode.el
-    SUBDIR += ruby-rdtool
     SUBDIR += ruby-rttool
     SUBDIR += rubygem-abbrev
     SUBDIR += rubygem-action_text-trix
@@ -1937,6 +1937,7 @@
     SUBDIR += rubygem-creole
     SUBDIR += rubygem-cronex
     SUBDIR += rubygem-css_parser
+    SUBDIR += rubygem-css_parser1
     SUBDIR += rubygem-cssmin
     SUBDIR += rubygem-cucumber-gherkin
     SUBDIR += rubygem-cucumber-gherkin39
@@ -2305,6 +2306,7 @@
     SUBDIR += xhtml-basic
     SUBDIR += xhtml-modularization
     SUBDIR += xhtml1-xsd
+    SUBDIR += xled
     SUBDIR += xlhtml
     SUBDIR += xlnt
     SUBDIR += xlreader
@@ -2327,6 +2329,9 @@
     SUBDIR += xmlwrapp
     SUBDIR += xom
     SUBDIR += xorg-sgml-doctools
+    SUBDIR += xql
+    SUBDIR += xray
+    SUBDIR += xshape
     SUBDIR += xslide.el
     SUBDIR += xstream
     SUBDIR += xwindiff

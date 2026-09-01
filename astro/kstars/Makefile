@@ -1,5 +1,6 @@
 PORTNAME=	kstars
 DISTVERSION=	3.8.4.1
+PORTREVISION=	1
 PORTEPOCH=	1
 CATEGORIES=	astro kde
 MASTER_SITES=	KDE/stable/${PORTNAME}/${DISTVERSION}/
@@ -9,6 +10,9 @@ COMMENT=	KDE desktop planetarium
 WWW=		https://edu.kde.org/kstars
 
 LICENSE=	GPLv2
+
+# ld: error: failed to open kstars/kstars: Cannot allocate memory
+IGNORE_i386=	fails to build on i386
 
 LIB_DEPENDS=	libXISF.so:graphics/libxisf \
 		libcfitsio.so:astro/cfitsio \

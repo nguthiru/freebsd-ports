@@ -582,9 +582,11 @@
     SUBDIR += octave-forge-database
     SUBDIR += octave-forge-dataframe
     SUBDIR += octave-forge-datatypes
+    SUBDIR += octave-forge-devtools
     SUBDIR += octave-forge-dicom
     SUBDIR += octave-forge-divand
     SUBDIR += octave-forge-doctest
+    SUBDIR += octave-forge-drafting
     SUBDIR += octave-forge-dsppack
     SUBDIR += octave-forge-econometrics
     SUBDIR += octave-forge-fda

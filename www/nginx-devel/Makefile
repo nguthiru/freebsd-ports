@@ -1,10 +1,9 @@
 PORTNAME?=	nginx
 PORTVERSION=	${NGINX_VERSION}
 .include "version.mk"
-PORTREVISION=	5
+PORTREVISION=	1
 CATEGORIES=	www
-MASTER_SITES=	https://nginx.org/download/ \
-		LOCAL/osa
+MASTER_SITES=	https://nginx.org/download/
 PKGNAMESUFFIX?=	-devel
 DISTFILES=	${DISTNAME}${EXTRACT_SUFX}
 
@@ -17,7 +16,7 @@ LICENSE_FILE?=	${WRKSRC}/LICENSE
 
 CONFLICTS_INSTALL=	nginx
 
-PORTSCOUT=	limit:^1\.2[8-9]\.[0-9]*
+PORTSCOUT=	limit:^1\.31\.[0-9]*
 
 USES=		cpe compiler:env
 
@@ -333,15 +332,26 @@ post-patch-SFLOW-on:
 pre-configure-SMALL_LIGHT-on:
 	( cd ${WRKSRC_small_light} && ./setup )
 
+pre-configure-DEVEL_KIT-on:
+	@${RM} -rf ${WRKSRC_devel_kit}
+	@${CP} -R ${LOCALBASE}/share/nginx/modules/nginx-module-ndk ${WRKSRC_devel_kit}
+	@${CHMOD} -R u+w ${WRKSRC_devel_kit}
+
 pre-configure-LUA-on:
 	@${RM} -rf ${WRKSRC_lua}
-	@cd ${LOCALBASE}/share/nginx/modules/nginx-module-lua && \
-		${COPYTREE_SHARE} . ${WRKSRC_lua}
+	@${CP} -R ${LOCALBASE}/share/nginx/modules/nginx-module-lua ${WRKSRC_lua}
+	@${CHMOD} -R u+w ${WRKSRC_lua}
 
 pre-configure-LUASTREAM-on:
 	@${RM} -rf ${WRKSRC_luastream}
-	@cd ${LOCALBASE}/share/nginx/modules/nginx-module-lua-stream && \
-		${COPYTREE_SHARE} . ${WRKSRC_luastream}
+	@${CP} -R ${LOCALBASE}/share/nginx/modules/nginx-module-lua-stream ${WRKSRC_luastream}
+	@${CHMOD} -R u+w ${WRKSRC_luastream}
+
+pre-configure-NJS-on:
+	@${RM} -rf ${WRKSRC_njs}
+	@${CP} -R ${LOCALBASE}/share/nginx/modules/nginx-module-njs ${WRKSRC_njs}
+	@${CHMOD} -R u+w ${WRKSRC_njs}
+	@${CHMOD} u+x ${WRKSRC_njs}/configure
 
 do-configure-NJS-on:
 	( cd ${WRKSRC_njs} && ${SETENV} ${CONFIGURE_ENV} ${CONFIGURE_CMD} ${NJS_CONFIGURE_ARGS} )

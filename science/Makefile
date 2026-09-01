@@ -111,6 +111,7 @@
     SUBDIR += ghmm
     SUBDIR += gnudatalanguage
     SUBDIR += gpaw-setups
+    SUBDIR += gperiodic
     SUBDIR += gramps
     SUBDIR += gromacs
     SUBDIR += gsmc
@@ -380,7 +381,6 @@
     SUBDIR += py-libpysal
     SUBDIR += py-libwignernj
     SUBDIR += py-lifelines
-    SUBDIR += py-mdp
     SUBDIR += py-mercantile
     SUBDIR += py-meshio
     SUBDIR += py-mmcif
@@ -400,7 +400,6 @@
     SUBDIR += py-nglview
     SUBDIR += py-nibabel
     SUBDIR += py-nixio
-    SUBDIR += py-obspy
     SUBDIR += py-oddt
     SUBDIR += py-openEMS
     SUBDIR += py-openbabel
@@ -451,6 +450,7 @@
     SUBDIR += py-rmf
     SUBDIR += py-rmsd
     SUBDIR += py-ruffus
+    SUBDIR += py-sarkit
     SUBDIR += py-sarpy
     SUBDIR += py-scikit-fuzzy
     SUBDIR += py-scikit-learn

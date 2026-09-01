@@ -171,6 +171,7 @@
     SUBDIR += freebsd-uucp
     SUBDIR += freediameter
     SUBDIR += freeipa-client
+    SUBDIR += freeipa-server
     SUBDIR += freeradius-client
     SUBDIR += freeradius3
     SUBDIR += freerdp
@@ -346,7 +347,6 @@
     SUBDIR += kldap
     SUBDIR += kmailtransport
     SUBDIR += kmbox
-    SUBDIR += kmime
     SUBDIR += knc
     SUBDIR += knxd
     SUBDIR += kontactinterface
@@ -556,6 +556,7 @@
     SUBDIR += nng
     SUBDIR += norm
     SUBDIR += nqptp
+    SUBDIR += nsc-tui
     SUBDIR += nsq
     SUBDIR += nss-pam-ldapd
     SUBDIR += nss-pam-ldapd-sasl
@@ -1100,6 +1101,7 @@
     SUBDIR += py-lib389
     SUBDIR += py-libcloud
     SUBDIR += py-libdnet
+    SUBDIR += py-macaddress
     SUBDIR += py-magic-wormhole
     SUBDIR += py-matrix-synapse-ldap3
     SUBDIR += py-maxminddb
@@ -1292,6 +1294,7 @@
     SUBDIR += rubygem-amq-protocol
     SUBDIR += rubygem-amqp
     SUBDIR += rubygem-amqp-utils
+    SUBDIR += rubygem-apnotic
     SUBDIR += rubygem-apollo_upload_server
     SUBDIR += rubygem-app_store_connect
     SUBDIR += rubygem-asset_sync
@@ -1354,6 +1357,7 @@
     SUBDIR += rubygem-gitlab-fog-azure-rm
     SUBDIR += rubygem-gitlab-gkg-proto
     SUBDIR += rubygem-gitlab-kas-grpc
+    SUBDIR += rubygem-gitlab-orbit-proto
     SUBDIR += rubygem-gitlab_omniauth-ldap
     SUBDIR += rubygem-gitlab_omniauth-ldap-gitlab
     SUBDIR += rubygem-google-cloud-bigquery
@@ -1396,6 +1400,7 @@
     SUBDIR += rubygem-grpc-tools
     SUBDIR += rubygem-grpc_reflection
     SUBDIR += rubygem-hangouts-chat
+    SUBDIR += rubygem-http-2
     SUBDIR += rubygem-http-parser
     SUBDIR += rubygem-http_parser.rb
     SUBDIR += rubygem-httpauth
@@ -1408,6 +1413,8 @@
     SUBDIR += rubygem-maxmind-db
     SUBDIR += rubygem-mqtt
     SUBDIR += rubygem-nats-pure
+    SUBDIR += rubygem-nats-pure-gitlab
+    SUBDIR += rubygem-net-http2
     SUBDIR += rubygem-net-ldap
     SUBDIR += rubygem-net-ldap017
     SUBDIR += rubygem-net-netrc
@@ -1423,6 +1430,7 @@
     SUBDIR += rubygem-oauth
     SUBDIR += rubygem-oauth-gitlab
     SUBDIR += rubygem-oauth-tty
+    SUBDIR += rubygem-oauth-tty-gitlab
     SUBDIR += rubygem-oauth0
     SUBDIR += rubygem-oauth2
     SUBDIR += rubygem-oauth2-gitlab
@@ -1518,6 +1526,7 @@
     SUBDIR += samba420
     SUBDIR += samba422
     SUBDIR += samba423
+    SUBDIR += samba424
     SUBDIR += samplicator
     SUBDIR += savvycan
     SUBDIR += sbm

@@ -1,8 +1,9 @@
 PORTNAME=	aerc
 DISTVERSION=	0.22.0
+PORTREVISION=	2
 CATEGORIES=	mail
 
-MAINTAINER=	herbert@gojira.at
+MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Email client for your terminal
 WWW=		https://aerc-mail.org/
 

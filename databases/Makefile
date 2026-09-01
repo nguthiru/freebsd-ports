@@ -73,6 +73,10 @@
     SUBDIR += firebird40-server
     SUBDIR += fmptools
     SUBDIR += fortytwo-bdb
+    SUBDIR += foundationdb71-client
+    SUBDIR += foundationdb71-server
+    SUBDIR += foundationdb73-client
+    SUBDIR += foundationdb73-server
     SUBDIR += frece
     SUBDIR += freetds
     SUBDIR += freetds-devel
@@ -578,6 +582,7 @@
     SUBDIR += pgbackrest
     SUBDIR += pgbadger
     SUBDIR += pgbarman
+    SUBDIR += pgbot
     SUBDIR += pgbouncer
     SUBDIR += pgdbf
     SUBDIR += pgjwt
@@ -597,7 +602,9 @@
     SUBDIR += pgschema
     SUBDIR += pgsql-http
     SUBDIR += pgtcl
+    SUBDIR += pgterm
     SUBDIR += pgtop
+    SUBDIR += pgtui
     SUBDIR += pguri
     SUBDIR += pgvector
     SUBDIR += php-memvector
@@ -736,6 +743,14 @@
     SUBDIR += postgresql18-plpython
     SUBDIR += postgresql18-pltcl
     SUBDIR += postgresql18-server
+    SUBDIR += postgresql19-client
+    SUBDIR += postgresql19-contrib
+    SUBDIR += postgresql19-docs
+    SUBDIR += postgresql19-pgtcl
+    SUBDIR += postgresql19-plperl
+    SUBDIR += postgresql19-plpython
+    SUBDIR += postgresql19-pltcl
+    SUBDIR += postgresql19-server
     SUBDIR += powa-archivist
     SUBDIR += powa-web
     SUBDIR += powerarchitect
@@ -752,7 +767,6 @@
     SUBDIR += puredb
     SUBDIR += pxlib
     SUBDIR += pxtools
-    SUBDIR += py-Elixir
     SUBDIR += py-PyGreSQL
     SUBDIR += py-PyHive
     SUBDIR += py-PyPika
@@ -879,7 +893,6 @@
     SUBDIR += py-sqlalchemy-json
     SUBDIR += py-sqlalchemy-migrate
     SUBDIR += py-sqlalchemy-utils
-    SUBDIR += py-sqlalchemy10
     SUBDIR += py-sqlalchemy14
     SUBDIR += py-sqlalchemy20
     SUBDIR += py-sqlcipher3
@@ -1167,6 +1180,7 @@
     SUBDIR += tdb1
     SUBDIR += tdb1410
     SUBDIR += tdb1413
+    SUBDIR += tdb1415
     SUBDIR += tdbc
     SUBDIR += tile38
     SUBDIR += tiledb
