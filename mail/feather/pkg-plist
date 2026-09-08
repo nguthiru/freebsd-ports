@@ -1,0 +1,4 @@
+bin/feather
+@sample %%ETCDIR%%/pipeline.exs.sample
+@sample %%ETCDIR%%/server.exs.sample
+@dir(feather,feather,0750) %%FEATHER_LOGDIR%%
